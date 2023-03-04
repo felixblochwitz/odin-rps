@@ -1,6 +1,7 @@
 body {
     background-color: black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -17,6 +18,16 @@ label {
   color: white;
   font-family: sans-serif;
   margin-bottom: 20px;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+}
+
+input {
+  font-size: larger;
+  text-align: center;
 }
 
 .interaction {
