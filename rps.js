@@ -45,6 +45,7 @@ function compete(humanChoice, computerChoice) {
       else {
         alert(`The computer also chose ${computerChoice}. It's a DRAW!`)
       }
+      break;
     case "Paper":
       if (computerChoice == "Rock") {
         alert(`The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`);
@@ -54,6 +55,7 @@ function compete(humanChoice, computerChoice) {
       else {
         alert(`The computer also chose ${computerChoice}. It's a DRAW!`)
       }
+      break;
     case "Scissors":
       if (computerChoice == "Paper") {
         alert(`The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`);
