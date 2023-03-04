@@ -1,0 +1,25 @@
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    }
+
+button {
+    font-size: 24px;
+    padding: 4px;
+    border-radius: 6px;
+    margin-top: 24px;
+}
+
+label {
+  color: white;
+  font-family: sans-serif;
+  margin-bottom: 20px;
+}
+
+.interaction {
+    display: flex;
+    flex-direction: column;
+}
