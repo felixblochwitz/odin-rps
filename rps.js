@@ -1,8 +1,7 @@
-let round = 0;
 function getComputerChoice() {
-  const options = ["Rock", "Paper", "Scissors"]
+  const options = ["Rock", "Paper", "Scissors"];
   let randomNumber = Math.random();
-  return options[Math.floor(randomNumber * options.length)]
+  return options[Math.floor(randomNumber * options.length)];
 }
 
 function getUserChoice() {
@@ -26,37 +25,23 @@ function testHumanChoice(choice) {
 }
 
 function compete(humanChoice, computerChoice) {
-  switch (humanChoice) {
-    case "Rock":
-      if (computerChoice == "Scissors") {
-        alert(`The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`);
-      } else if (computerChoice == "Paper") {
-        alert(`The computer chose ${computerChoice}. ${computerChoice} beats ${humanChoice}. YOU LOSE!`);
-      }
-      else {
-        alert(`The computer also chose ${computerChoice}. It's a DRAW!`)
-      }
-      break;
-    case "Paper":
-      if (computerChoice == "Rock") {
-        alert(`The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`);
-      } else if (computerChoice == "Scissors") {
-        alert(`The computer chose ${computerChoice}. ${computerChoice} beats ${humanChoice}. YOU LOSE!`);
-      }
-      else {
-        alert(`The computer also chose ${computerChoice}. It's a DRAW!`)
-      }
-      break;
-    case "Scissors":
-      if (computerChoice == "Paper") {
-        alert(`The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`);
-      } else if (computerChoice == "Rock") {
-        alert(`The computer chose ${computerChoice}. ${computerChoice} beats ${humanChoice}. YOU LOSE!`);
-      }
-      else {
-        alert(`The computer also chose ${computerChoice}. It's a DRAW!`)
-      }
-      break;
+  if (humanChoice === computerChoice) {
+    alert(`The computer also chose ${computerChoice}. It's a DRAW!`);
+    return;
+  } else if (
+    (humanChoice === "Rock" && computerChoice === "Scissors") ||
+    (humanChoice === "Paper" && computerChoice == "Rock") ||
+    (humanChoice === "Scissors" && computerChoice === "Paper")
+  ) {
+    alert(
+      `The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`
+    );
+    return;
+  } else {
+    alert(
+      `The computer chose ${computerChoice}. ${computerChoice} beats ${humanChoice}. YOU LOSE!`
+    );
+    return;
   }
 }
 
