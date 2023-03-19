@@ -1,23 +1,14 @@
+let round = 0;
 function getComputerChoice() {
+  const options = ["Rock", "Paper", "Scissors"]
   let randomNumber = Math.random();
-
-  if (randomNumber < 0.33) {
-    console.log("Rock");
-    return "Rock";
-  } else if (0.33 <= randomNumber && randomNumber < 0.67) {
-    console.log("Paper");
-    return "Paper";
-  } else {
-    console.log("Scissors");
-    return "Scissors";
-  }
+  return options[Math.floor(randomNumber * options.length)]
 }
 
 function getUserChoice() {
   let humanChoice = document.getElementById("humanChoice").value;
   humanChoice = normalizeHumanChoice(humanChoice);
   testHumanChoice(humanChoice);
-  console.log(humanChoice);
   return humanChoice;
 }
 
