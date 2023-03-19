@@ -29,29 +29,26 @@ function isGameOver() {
   if (round === 5) {
     if (humanScore > computerScore) {
       alert(`GAME OVER 
-      You win with a score of ${humanScore} : ${computerScore}`)
-    }
-    else if (humanScore === computerScore) {
+      You win with a score of ${humanScore} : ${computerScore}`);
+    } else if (humanScore === computerScore) {
       alert(`GAME OVER
-        It's a tie :|`)
-    }
-    else alert(`GAME OVER 
-      You lose with a score of ${humanScore} : ${computerScore}`)
+        It's a tie :|`);
+    } else
+      alert(`GAME OVER 
+      You lose with a score of ${humanScore} : ${computerScore}`);
     round = 0;
     humanScore = 0;
     computerScore = 0;
-    alert("Play Again")
+    alert("Play Again");
     input.value = "";
   }
- }
-
+}
 
 function compete(humanChoice, computerChoice) {
   console.log(round);
   if (!["Rock", "Paper", "Scissors"].includes(humanChoice)) {
     return;
-  }
-  else if (humanChoice === computerChoice) {
+  } else if (humanChoice === computerChoice) {
     alert(`The computer also chose ${computerChoice}. It's a DRAW!`);
     isGameOver();
   } else if (
@@ -71,7 +68,7 @@ function compete(humanChoice, computerChoice) {
     );
     isGameOver();
   }
-  round ++;
+  round++;
 }
 
 let round = 1;
