@@ -25,29 +25,58 @@ function testHumanChoice(choice) {
   }
 }
 
+function isGameOver() {
+  if (round === 5) {
+    if (humanScore > computerScore) {
+      alert(`GAME OVER 
+      You win with a score of ${humanScore} : ${computerScore}`)
+    }
+    else if (humanScore === computerScore) {
+      alert(`GAME OVER
+        It's a tie :|`)
+    }
+    else alert(`GAME OVER 
+      You lose with a score of ${humanScore} : ${computerScore}`)
+    round = 0;
+    humanScore = 0;
+    computerScore = 0;
+    alert("Play Again")
+    input.value = "";
+  }
+ }
+
+
 function compete(humanChoice, computerChoice) {
+  console.log(round);
   if (!["Rock", "Paper", "Scissors"].includes(humanChoice)) {
     return;
   }
   else if (humanChoice === computerChoice) {
     alert(`The computer also chose ${computerChoice}. It's a DRAW!`);
-    return;
+    isGameOver();
   } else if (
     (humanChoice === "Rock" && computerChoice === "Scissors") ||
     (humanChoice === "Paper" && computerChoice == "Rock") ||
     (humanChoice === "Scissors" && computerChoice === "Paper")
   ) {
+    humanScore += 1;
     alert(
       `The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`
-    )
-    return;
+    );
+    isGameOver();
   } else {
+    computerScore += 1;
     alert(
       `The computer chose ${computerChoice}. ${computerChoice} beats ${humanChoice}. YOU LOSE!`
     );
-    return;
+    isGameOver();
   }
+  round ++;
 }
+
+let round = 1;
+let humanScore = 0;
+let computerScore = 0;
 
 const input = document.querySelector("input");
 const button = document.querySelector("button");
