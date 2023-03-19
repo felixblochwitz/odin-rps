@@ -21,11 +21,15 @@ function testHumanChoice(choice) {
     alert(
       `${choice} is not a valid choice. Please choose one of 'Rock', 'Paper' or 'Scissors'.`
     );
+    input.value = "";
   }
 }
 
 function compete(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) {
+  if (!["Rock", "Paper", "Scissors"].includes(humanChoice)) {
+    return;
+  }
+  else if (humanChoice === computerChoice) {
     alert(`The computer also chose ${computerChoice}. It's a DRAW!`);
     return;
   } else if (
@@ -35,7 +39,7 @@ function compete(humanChoice, computerChoice) {
   ) {
     alert(
       `The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`
-    );
+    )
     return;
   } else {
     alert(
@@ -45,6 +49,7 @@ function compete(humanChoice, computerChoice) {
   }
 }
 
+const input = document.querySelector("input");
 const button = document.querySelector("button");
 button.addEventListener("click", function () {
   compete(getUserChoice(), getComputerChoice());
