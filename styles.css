@@ -1,36 +1,70 @@
 body {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    }
-
-button {
-    font-size: 24px;
-    padding: 4px;
-    border-radius: 6px;
-    margin-top: 24px;
+  color: white;
+  background-color: #141414;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-label {
-  color: white;
-  font-family: sans-serif;
-  margin-bottom: 20px;
+h1 {
   text-align: center;
+  text-shadow: 1px 0px 12px;
 }
 
 img {
-  width: 100%;
+  padding: 0;
 }
 
-input {
-  font-size: larger;
-  text-align: center;
+button {
+  padding: 0;
+  /*border: solid inset;*/
+  border-radius: 9px;
 }
 
-.interaction {
-    display: flex;
-    flex-direction: column;
+/* Specific text styling */
+.word-rock {
+  color: #febff7;
+  text-shadow: 1px 0px 12px #ff55c4;
+}
+
+.word-paper {
+  color: #6cfefe;
+  text-shadow: 1px 0px 12px #459eff;
+}
+
+.word-scissors {
+  color: #fef649;
+  text-shadow: 1px 0px 12px #ffc228;
+}
+
+/* Container Styling */
+.play-buttons-container {
+  width: 70vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Image Styling */
+.play-button-img {
+  margin-bottom: -4px;
+  width: 10vw;
+  border: solid;
+  border-radius: 9px;
+}
+
+/* Buttong Styling */
+#play-button-rock {
+  border-color: #febff7;
+  box-shadow: 1px 0px 12px #ff55c4;
+}
+
+#play-button-paper {
+  border-color: #6cfefe;
+  box-shadow: 1px 0px 12px #459eff;
+}
+
+#play-button-scissors {
+  border-color: #fef649;
+  box-shadow: 1px 0px 12px #ffc228;
 }

@@ -5,16 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neon Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css" />
+    <script defer src="rps.js"></script>
   </head>
   <body>
-    <div class="image">
-      <img src="images/rock-paper-scissors-neon-icons.svg" alt="">
+    <h1>
+      Welcome to <span class="word-rock">Rock</span>,
+      <span class="word-paper">Paper</span>,
+      <span class="word-scissors">Scissors</span>
+    </h1>
+    <div class="play-buttons-container">
+        <button id="play-button-rock">
+          <img class="play-button-img" src="images/rock_ohne.png" alt="" />
+        </button>
+      <button id="play-button-paper">
+        <img class="play-button-img" src="images/paper_ohne.png" alt="" />
+      </button>
+      <button id="play-button-scissors">
+        <img class="play-button-img" src="images/scissors_ohne.png" alt="" />
+      </button>
     </div>
-    <div class="interaction">
-      <label>Enter your choice here</label>
-      <input type="text" , id="humanChoice" />
-      <button>PLAY</button>
-    </div>
-    <script src="rps.js"></script>
   </body>
 </html>
