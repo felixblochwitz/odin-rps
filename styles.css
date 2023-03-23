@@ -22,6 +22,11 @@ button {
   border-radius: 9px;
 }
 
+a {
+  color: #009CDD;
+  text-shadow: 1px 0px 12px #023088;
+}
+
 /* Specific text styling */
 .word-rock {
   color: #febff7;
