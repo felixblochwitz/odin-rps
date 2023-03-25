@@ -8,22 +8,52 @@
     <script defer src="rps.js"></script>
   </head>
   <body>
-    <h1>
-      Welcome to <span class="word-rock">Rock</span>,
-      <span class="word-paper">Paper</span>,
-      <span class="word-scissors">Scissors</span>
-    </h1>
-    <h2>If you win, you are the greatest! But if I win, you have to send 5€ to my <a href="https://www.paypal.com/paypalme/felixblochwitz/5">Paypal</a></h2>
-    <div class="play-buttons-container">
+    <!-- "header section" -->
+    <div>
+      <h1>
+        Welcome to <span class="word-rock">Rock</span>,
+        <span class="word-paper">Paper</span>,
+        <span class="word-scissors">Scissors</span>
+      </h1>
+      <h2>
+        If you win, you are the greatest! But if I win, you have to send 5€ to
+        my
+        <a href="https://www.paypal.com/paypalme/felixblochwitz/5">Paypal</a>
+      </h2>
+    </div>
+
+    <!-- interactive section -->
+    <div>
+      <h2>Choose your Weapon</h2>
+      <p>Click one of the buttons below</p>
+      <div class="play-buttons-container">
         <button id="play-button-rock">
           <img class="play-button-img" src="images/rock_ohne.png" alt="" />
         </button>
-      <button id="play-button-paper">
-        <img class="play-button-img" src="images/paper_ohne.png" alt="" />
-      </button>
-      <button id="play-button-scissors">
-        <img class="play-button-img" src="images/scissors_ohne.png" alt="" />
-      </button>
+        <button id="play-button-paper">
+          <img class="play-button-img" src="images/paper_ohne.png" alt="" />
+        </button>
+        <button id="play-button-scissors">
+          <img class="play-button-img" src="images/scissors_ohne.png" alt="" />
+        </button>
+      </div>
+    </div>
+    <!-- results section -->
+    <div>
+      <h2>First to 5 wins!</h2>
+      <div class="choices">
+        <h4>Human</h4>
+        <img class="choice-img" src="images/rock_ohne.png" alt="Human Test" />
+        <h3>:</h3>
+        <img
+          class="choice-img"
+          src="images/scissors_ohne.png"
+          alt="Comp Test"
+        />
+        <h4>Computer</h4>
+      </div>
+      <h3>Result Text</h3>
+      <div class="standings"></div>
     </div>
   </body>
 </html>
