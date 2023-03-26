@@ -13,27 +13,6 @@ function getComputerChoice() {
   }
 }
 
-function getUserChoice() {
-  let humanChoice = document.getElementById("humanChoice").value;
-  humanChoice = normalizeHumanChoice(humanChoice);
-  testHumanChoice(humanChoice);
-  console.log(humanChoice);
-  return humanChoice;
-}
-
-function normalizeHumanChoice(choice) {
-  return choice.charAt(0).toUpperCase() + choice.slice(1).toLowerCase();
-}
-
-function testHumanChoice(choice) {
-  const validChoices = ["Rock", "Paper", "Scissors"];
-  if (!validChoices.includes(choice)) {
-    alert(
-      `${choice} is not a valid choice. Please choose one of 'Rock', 'Paper' or 'Scissors'.`
-    );
-  }
-}
-
 function compete(humanChoice, computerChoice) {
   switch (humanChoice) {
     case "Rock":
@@ -69,7 +48,20 @@ function compete(humanChoice, computerChoice) {
   }
 }
 
-const button = document.querySelector("button");
-button.addEventListener("click", function () {
-  compete(getUserChoice(), getComputerChoice());
+const rockButton = document.querySelector("#play-button-rock")
+console.log(rockButton);
+rockButton.addEventListener("click", function () {
+  logSomeShit("rock", getComputerChoice())
+});
+
+const paperButton = document.querySelector("#play-button-paper")
+console.log(paperButton);
+paperButton.addEventListener("click", function () {
+  logSomeShit("paper", getComputerChoice())
+});
+
+const scissorsButton = document.querySelector("#play-button-scissors")
+console.log(scissorsButton);
+scissorsButton.addEventListener("click", function () {
+  logSomeShit("scissors", getComputerChoice())
 });
