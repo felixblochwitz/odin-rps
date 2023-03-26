@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
   let randomNumber = Math.floor(Math.random() * choices.length);
@@ -31,6 +28,18 @@ function showRoundResultText(humanChoice, computerChoice, roundResult) {
       <br>It's a ${roundResult}!`;
   }
   roundResultElement.innerHTML = resultString;
+}
+
+function updateScore(roundResult) {
+  if (roundResult === "WIN") {
+    const humanScoreSpan = document.querySelector("#player-score");
+    let humanScore = parseInt(humanScoreSpan.textContent);
+    humanScoreSpan.textContent = humanScore += 1;
+  } else if (roundResult === "LOSE") {
+    const computerScoreSpan = document.querySelector("#computer-score");
+    let computerScore = parseInt(computerScoreSpan.textContent)
+    computerScoreSpan.textContent = computerScore += 1;
+  }
 }
 
 function compete(humanChoice, computerChoice) {
