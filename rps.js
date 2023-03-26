@@ -61,6 +61,7 @@ function compete(humanChoice, computerChoice) {
     showRoundResultText(humanChoice, computerChoice, roundResult);
     updateScore(roundResult);
   }
+  round++;
 }
 
 function resetGame() {
