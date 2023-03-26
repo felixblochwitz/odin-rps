@@ -1,67 +1,40 @@
 function getComputerChoice() {
-  let randomNumber = Math.random();
-
-  if (randomNumber < 0.33) {
-    console.log("Rock");
-    return "Rock";
-  } else if (0.33 <= randomNumber && randomNumber < 0.67) {
-    console.log("Paper");
-    return "Paper";
-  } else {
-    console.log("Scissors");
-    return "Scissors";
-  }
+  const choices = ["rock", "paper", "scissors"];
+  let randomNumber = Math.floor(Math.random() * choices.length);
+  return choices[randomNumber]
 }
 
 function compete(humanChoice, computerChoice) {
-  switch (humanChoice) {
-    case "Rock":
-      if (computerChoice == "Scissors") {
-        alert(`The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`);
-      } else if (computerChoice == "Paper") {
-        alert(`The computer chose ${computerChoice}. ${computerChoice} beats ${humanChoice}. YOU LOSE!`);
-      }
-      else {
-        alert(`The computer also chose ${computerChoice}. It's a DRAW!`)
-      }
-      break;
-    case "Paper":
-      if (computerChoice == "Rock") {
-        alert(`The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`);
-      } else if (computerChoice == "Scissors") {
-        alert(`The computer chose ${computerChoice}. ${computerChoice} beats ${humanChoice}. YOU LOSE!`);
-      }
-      else {
-        alert(`The computer also chose ${computerChoice}. It's a DRAW!`)
-      }
-      break;
-    case "Scissors":
-      if (computerChoice == "Paper") {
-        alert(`The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`);
-      } else if (computerChoice == "Rock") {
-        alert(`The computer chose ${computerChoice}. ${computerChoice} beats ${humanChoice}. YOU LOSE!`);
-      }
-      else {
-        alert(`The computer also chose ${computerChoice}. It's a DRAW!`)
-      }
-      break;
+  if (humanChoice === computerChoice) {
+    console.log(humanChoice);
+    console.log(computerChoice);
+    console.log("Draw");
+  } else if (
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
+  ) {
+    console.log(humanChoice);
+    console.log(computerChoice);
+    console.log("Win!");
+  } else {
+    console.log(humanChoice);
+    console.log(computerChoice);
+    console.log("Lose!");
   }
 }
 
-const rockButton = document.querySelector("#play-button-rock")
-console.log(rockButton);
+const rockButton = document.querySelector("#play-button-rock");
 rockButton.addEventListener("click", function () {
-  compete("rock", getComputerChoice())
+  compete("rock", getComputerChoice());
 });
 
-const paperButton = document.querySelector("#play-button-paper")
-console.log(paperButton);
+const paperButton = document.querySelector("#play-button-paper");
 paperButton.addEventListener("click", function () {
-  compete("paper", getComputerChoice())
+  compete("paper", getComputerChoice());
 });
 
-const scissorsButton = document.querySelector("#play-button-scissors")
-console.log(scissorsButton);
+const scissorsButton = document.querySelector("#play-button-scissors");
 scissorsButton.addEventListener("click", function () {
-  compete("scissors", getComputerChoice())
+  compete("scissors", getComputerChoice());
 });
