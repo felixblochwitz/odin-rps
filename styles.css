@@ -7,6 +7,7 @@ body {
   align-items: center;
   justify-content: space-evenly;
   height: 100vh;
+  text-align: center;
 }
 
 div {
@@ -26,8 +27,8 @@ img {
 
 button {
   padding: 0;
-  /*border: solid inset;*/
   border-radius: 9px;
+  background-color: #141414;
 }
 
 a {
