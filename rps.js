@@ -1,82 +1,112 @@
 function getComputerChoice() {
-  const options = ["Rock", "Paper", "Scissors"];
-  let randomNumber = Math.random();
-  return options[Math.floor(randomNumber * options.length)];
+  const choices = ["rock", "paper", "scissors"];
+  let randomNumber = Math.floor(Math.random() * choices.length);
+  return choices[randomNumber];
 }
 
-function getUserChoice() {
-  let humanChoice = document.getElementById("humanChoice").value;
-  humanChoice = normalizeHumanChoice(humanChoice);
-  testHumanChoice(humanChoice);
-  return humanChoice;
+function showChoices(humanChoice, computerChoice) {
+  const imageMap = {
+    rock: "images/rock_ohne.png",
+    paper: "images/paper_ohne.png",
+    scissors: "images/scissors_ohne.png",
+  };
+  const humanChoiceImg = document.querySelector("#human-choice-img");
+  const computerChoiceImg = document.querySelector("#computer-choice-img");
+
+  humanChoiceImg.src = imageMap[humanChoice];
+  computerChoiceImg.src = imageMap[computerChoice];
 }
 
-function normalizeHumanChoice(choice) {
-  return choice.charAt(0).toUpperCase() + choice.slice(1).toLowerCase();
-}
-
-function testHumanChoice(choice) {
-  const validChoices = ["Rock", "Paper", "Scissors"];
-  if (!validChoices.includes(choice)) {
-    alert(
-      `${choice} is not a valid choice. Please choose one of 'Rock', 'Paper' or 'Scissors'.`
-    );
-    input.value = "";
+function showRoundResultText(humanChoice, computerChoice, roundResult) {
+  const roundResultElement = document.querySelector("#round-result-text");
+  let resultString = "";
+  if (roundResult === "WIN" || roundResult === "LOSE") {
+    resultString = `You chose ${humanChoice}, the computer chose ${computerChoice}.
+      <br>You ${roundResult}!`;
+  } else {
+    resultString = `You both made the same choice, leading to the saddest result in sports.
+      <br>It's a ${roundResult}!`;
   }
+  roundResultElement.innerHTML = resultString;
 }
 
-function isGameOver() {
-  if (round === 5) {
-    if (humanScore > computerScore) {
-      alert(`GAME OVER 
-      You win with a score of ${humanScore} : ${computerScore}`);
-    } else if (humanScore === computerScore) {
-      alert(`GAME OVER
-        It's a tie :|`);
-    } else
-      alert(`GAME OVER 
-      You lose with a score of ${humanScore} : ${computerScore}`);
-    round = 0;
-    humanScore = 0;
-    computerScore = 0;
-    alert("Play Again");
-    input.value = "";
+function updateScore(roundResult) {
+  const humanScoreSpan = document.querySelector("#player-score");
+  const computerScoreSpan = document.querySelector("#computer-score");
+  let humanScore = parseInt(humanScoreSpan.textContent);
+  let computerScore = parseInt(computerScoreSpan.textContent);
+  if (roundResult === "WIN") {
+    humanScoreSpan.textContent = humanScore += 1;
+  } else if (roundResult === "LOSE") {
+    computerScoreSpan.textContent = computerScore += 1;
   }
 }
 
 function compete(humanChoice, computerChoice) {
-  console.log(round);
-  if (!["Rock", "Paper", "Scissors"].includes(humanChoice)) {
-    return;
-  } else if (humanChoice === computerChoice) {
-    alert(`The computer also chose ${computerChoice}. It's a DRAW!`);
-    isGameOver();
+  showChoices(humanChoice, computerChoice);
+  if (humanChoice === computerChoice) {
+    const roundResult = "DRAW";
+    showRoundResultText(humanChoice, computerChoice, roundResult);
+    updateScore(roundResult);
   } else if (
-    (humanChoice === "Rock" && computerChoice === "Scissors") ||
-    (humanChoice === "Paper" && computerChoice == "Rock") ||
-    (humanChoice === "Scissors" && computerChoice === "Paper")
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
   ) {
-    humanScore += 1;
-    alert(
-      `The computer chose ${computerChoice}. ${humanChoice} beats ${computerChoice}. YOU WIN!`
-    );
-    isGameOver();
+    const roundResult = "WIN";
+    showRoundResultText(humanChoice, computerChoice, roundResult);
+    updateScore(roundResult);
   } else {
-    computerScore += 1;
-    alert(
-      `The computer chose ${computerChoice}. ${computerChoice} beats ${humanChoice}. YOU LOSE!`
-    );
-    isGameOver();
+    const roundResult = "LOSE";
+    showRoundResultText(humanChoice, computerChoice, roundResult);
+    updateScore(roundResult);
   }
   round++;
 }
 
-let round = 1;
-let humanScore = 0;
-let computerScore = 0;
+function resetGame() {
+  const choiceImages = document.querySelectorAll(".choice-img");
+  const competitorScores = document.querySelectorAll(".competitor-scores");
+  const resultText = document.querySelector("#round-result-text");
+  alert("Game Over");
+  choiceImages.forEach(img => img.src = "");
+  competitorScores.forEach(score => score.textContent = "0");
+  resultText.textContent = "Who will win?"
+}
 
-const input = document.querySelector("input");
-const button = document.querySelector("button");
-button.addEventListener("click", function () {
-  compete(getUserChoice(), getComputerChoice());
+const playerScore = document.querySelector("#player-score");
+const computerScore = document.querySelector("#computer-score");
+
+const observer = new MutationObserver(function (mutations) {
+  console.log(mutations);
+  mutations.forEach(function (mutation) {
+    if (
+      mutation.type === "childList" &&
+      [playerScore, computerScore].includes(mutation.target) &&
+      mutation.target.textContent === "5"
+    ) {
+      setTimeout(resetGame, 10);
+    }
+  });
 });
+
+const config = { childList: true };
+observer.observe(playerScore, config);
+observer.observe(computerScore, config);
+
+const rockButton = document.querySelector("#play-button-rock");
+rockButton.addEventListener("click", function () {
+  compete("rock", getComputerChoice());
+});
+
+const paperButton = document.querySelector("#play-button-paper");
+paperButton.addEventListener("click", function () {
+  compete("paper", getComputerChoice());
+});
+
+const scissorsButton = document.querySelector("#play-button-scissors");
+scissorsButton.addEventListener("click", function () {
+  compete("scissors", getComputerChoice());
+});
+
+let lilTest = [1, 2];

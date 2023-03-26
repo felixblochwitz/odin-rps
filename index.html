@@ -3,18 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Neon Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css" />
+    <script defer src="rps.js"></script>
   </head>
   <body>
-    <div class="image">
-      <img src="images/rock-paper-scissors-neon-icons.svg" alt="">
+    <!-- "header section" -->
+    <div>
+      <h1>
+        Welcome to <span class="word-rock">Rock</span>,
+        <span class="word-paper">Paper</span>,
+        <span class="word-scissors">Scissors</span>
+      </h1>
+      <h2>
+        If you win, you are the greatest! But if you lose, you have to send 5€
+        to my
+        <a
+          href="https://www.paypal.com/paypalme/felixblochwitz/5"
+          target="_blank"
+          >Paypal</a
+        >
+      </h2>
     </div>
-    <div class="interaction">
-      <label>Enter your choice here</label>
-      <input type="text" , id="humanChoice" />
-      <button>PLAY</button>
+
+    <!-- interactive section -->
+    <div>
+      <h2>Choose your Weapon</h2>
+      <p>Click one of the buttons below</p>
+      <div class="play-buttons-container">
+        <button class="play-button" id="play-button-rock">
+          <img class="play-button-img" src="images/rock_ohne.png" alt="" />
+        </button>
+        <button class="play-button" id="play-button-paper">
+          <img class="play-button-img" src="images/paper_ohne.png" alt="" />
+        </button>
+        <button class="play-button" id="play-button-scissors">
+          <img class="play-button-img" src="images/scissors_ohne.png" alt="" />
+        </button>
+      </div>
     </div>
-    <script src="rps.js"></script>
+    <!-- results section -->
+    <div>
+      <div class="score">
+        <h2>First to 5 wins!</h2>
+        <h2>
+          <span class="competitor-scores" id="player-score">0</span> :
+          <span class="competitor-scores" id="computer-score">0</span>
+        </h2>
+      </div>
+      <div class="choices">
+        <h4>Player</h4>
+        <img class="choice-img" id="human-choice-img" src="" />
+        <h3>:</h3>
+        <img class="choice-img" id="computer-choice-img" src="" />
+        <h4>Computer</h4>
+      </div>
+      <p id="round-result-text">Who will win?</p>
+    </div>
   </body>
 </html>
