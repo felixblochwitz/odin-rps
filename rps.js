@@ -51,17 +51,17 @@ function compete(humanChoice, computerChoice) {
 const rockButton = document.querySelector("#play-button-rock")
 console.log(rockButton);
 rockButton.addEventListener("click", function () {
-  logSomeShit("rock", getComputerChoice())
+  compete("rock", getComputerChoice())
 });
 
 const paperButton = document.querySelector("#play-button-paper")
 console.log(paperButton);
 paperButton.addEventListener("click", function () {
-  logSomeShit("paper", getComputerChoice())
+  compete("paper", getComputerChoice())
 });
 
 const scissorsButton = document.querySelector("#play-button-scissors")
 console.log(scissorsButton);
 scissorsButton.addEventListener("click", function () {
-  logSomeShit("scissors", getComputerChoice())
+  compete("scissors", getComputerChoice())
 });
