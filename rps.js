@@ -43,8 +43,17 @@ function updateScore(roundResult) {
 }
 
 function compete(humanChoice, computerChoice) {
-  showChoices(humanChoice, computerChoice);
-  if (humanChoice === computerChoice) {
+  const playerScoreSpan = document.querySelector("#player-score");
+  const computerScoreSpan = document.querySelector("#computer-score");
+
+  if (
+    playerScoreSpan.textContent === "5" ||
+    computerScoreSpan.textContent === "5"
+  ) {
+    showModal(playerScoreSpan, computerScoreSpan);
+    return;
+  }
+  else if (humanChoice === computerChoice) {
     const roundResult = "DRAW";
     showRoundResultText(humanChoice, computerChoice, roundResult);
     updateScore(roundResult);
@@ -61,38 +70,60 @@ function compete(humanChoice, computerChoice) {
     showRoundResultText(humanChoice, computerChoice, roundResult);
     updateScore(roundResult);
   }
-  round++;
+  showChoices(humanChoice, computerChoice);
 }
 
 function resetGame() {
   const choiceImages = document.querySelectorAll(".choice-img");
   const competitorScores = document.querySelectorAll(".competitor-scores");
   const resultText = document.querySelector("#round-result-text");
-  alert("Game Over");
   choiceImages.forEach((img) => (img.src = ""));
   competitorScores.forEach((score) => (score.textContent = "0"));
   resultText.textContent = "Who will win?";
 }
 
-const playerScore = document.querySelector("#player-score");
-const computerScore = document.querySelector("#computer-score");
+function showModal(playerScoreSpan, computerScoreSpan) {
+  const playerScore = parseInt(playerScoreSpan.textContent);
+  const computerScore = parseInt(computerScoreSpan.textContent);
+  if (playerScore > computerScore) {
+    const modal = document.querySelector("#player-won");
+    modal.classList.add("modal-active");
+  } else {
+    const modal = document.querySelector("#computer-won");
+    modal.classList.add("modal-active");
+  }
+  const overlay = document.querySelector(".overlay");
+  overlay.style.display = "block";
+}
+
+function closeModal() {
+  console.log("been clicked");
+  const endgameModals = document.querySelectorAll(".endgame-modal");
+  const overlay = document.querySelector(".overlay");
+
+  endgameModals.forEach((modal) => modal.classList.remove("modal-active"));
+  overlay.style.display = "none";
+}
+
+const playerScoreSpan = document.querySelector("#player-score");
+const computerScoreSpan = document.querySelector("#computer-score");
 
 const observer = new MutationObserver(function (mutations) {
   console.log(mutations);
   mutations.forEach(function (mutation) {
     if (
       mutation.type === "childList" &&
-      [playerScore, computerScore].includes(mutation.target) &&
+      [playerScoreSpan, computerScoreSpan].includes(mutation.target) &&
       mutation.target.textContent === "5"
     ) {
-      setTimeout(resetGame, 10);
+      setTimeout(showModal(playerScoreSpan, computerScoreSpan), 10);
     }
   });
 });
 
 const config = { childList: true };
-observer.observe(playerScore, config);
-observer.observe(computerScore, config);
+observer.observe(playerScoreSpan, config);
+observer.observe(computerScoreSpan, config);
 
 const rockButton = document.querySelector("#play-button-rock");
 rockButton.addEventListener("click", function () {
@@ -108,3 +139,14 @@ const scissorsButton = document.querySelector("#play-button-scissors");
 scissorsButton.addEventListener("click", function () {
   compete("scissors", getComputerChoice());
 });
+
+const restartButton = document.querySelector("#restart-button");
+restartButton.addEventListener("click", closeModal);
+restartButton.addEventListener("click", resetGame);
+
+const restartButton2 = document.querySelector("#restart-button2");
+restartButton2.addEventListener("click", closeModal);
+restartButton2.addEventListener("click", resetGame);
+
+const overlay = document.querySelector(".overlay");
+overlay.addEventListener("click", closeModal);
