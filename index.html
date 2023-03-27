@@ -60,5 +60,29 @@
       </div>
       <p id="round-result-text">Who will win?</p>
     </div>
+
+    <!-- end game modal / overlay section -->
+    <div class="endgame-modal" id="player-won">
+      <h2>You won!</h2>
+      <button class="modal-button" id="restart-button">
+        <h2 class="button-label">Restart</h2>
+      </button>
+    </div>
+
+    <div class="endgame-modal" id="computer-won">
+      <h2>You lost!</h2>
+      <div class="modal-button-container">
+        <a href="https://www.paypal.com/paypalme/felixblochwitz/5" target="_blank">
+          <button class="modal-button">
+            <img class="paypal" src="images/paypal_button_round.png" alt="" />
+          </button>
+        </a>
+        <button class="modal-button" id="restart-button">
+          <h2 class="button-label">Restart</h2>
+        </button>
+      </div>
+    </div>
+
+    <div class="overlay"></div>
   </body>
 </html>

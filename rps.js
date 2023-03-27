@@ -69,9 +69,9 @@ function resetGame() {
   const competitorScores = document.querySelectorAll(".competitor-scores");
   const resultText = document.querySelector("#round-result-text");
   alert("Game Over");
-  choiceImages.forEach(img => img.src = "");
-  competitorScores.forEach(score => score.textContent = "0");
-  resultText.textContent = "Who will win?"
+  choiceImages.forEach((img) => (img.src = ""));
+  competitorScores.forEach((score) => (score.textContent = "0"));
+  resultText.textContent = "Who will win?";
 }
 
 const playerScore = document.querySelector("#player-score");
@@ -108,5 +108,3 @@ const scissorsButton = document.querySelector("#play-button-scissors");
 scissorsButton.addEventListener("click", function () {
   compete("scissors", getComputerChoice());
 });
-
-let lilTest = [1, 2];
